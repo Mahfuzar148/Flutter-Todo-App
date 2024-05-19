@@ -20,3 +20,58 @@ samples, guidance on mobile development, and a full API reference.
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Slideshow</title>
+<style>
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+
+  .fade {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .fade.active {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="slideshow-container">
+  <img class="fade" src="image1.jpg">
+  <img class="fade" src="image2.jpg">
+  <img class="fade" src="image3.jpg">
+</div>
+
+<script>
+let slideIndex = 0;
+const slides = document.querySelectorAll('.fade');
+
+function showSlides() {
+  slides.forEach(slide => {
+    slide.style.display = 'none';
+  });
+  slideIndex++;
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+  slides[slideIndex - 1].style.display = 'block';
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+
+showSlides();
+</script>
+
+</body>
+</html>
